@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Metal.Emailing.Interfaces;
 using Metal.Emailing.Models;
 using Metal.Emailing.Providers;
@@ -94,8 +96,8 @@ namespace EmailTesting
             var subject = string.Empty;
             var body = string.Empty;
 
-            bool stop = false;
-            string[] recipients = null;
+            var stop = false;
+            List<string> recipients = null;
 
             while (!stop)
             {
@@ -117,7 +119,7 @@ namespace EmailTesting
 
                 Console.WriteLine("Please enter the recipient list separated by a comma (,) : ");
                 var recipientListString = Console.ReadLine();
-                recipients = string.IsNullOrWhiteSpace(recipientListString) ? recipients : recipientListString?.Split(",");
+                recipients = string.IsNullOrWhiteSpace(recipientListString) ? recipients : recipientListString?.Split(",").ToList();
 
                 var email = new EmailRequest()
                 {

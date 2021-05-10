@@ -13,9 +13,12 @@ namespace Metal.Emailing.Providers
 
         public SmtpProvider(MailSettings mailSettings, bool enableSSL = false)
         {
-            _smtpClient = new SmtpClient(mailSettings.Host, mailSettings.Port);
-            _smtpClient.Credentials = new NetworkCredential(mailSettings.Username, mailSettings.Password);
-            _smtpClient.EnableSsl = enableSSL;
+            _smtpClient = new SmtpClient(mailSettings.Host, mailSettings.Port)
+            {
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(mailSettings.Username, mailSettings.Password),
+                EnableSsl = enableSSL
+            };
         }
 
         public EmailSendResult SendEmail(EmailRequest emailRequest)

@@ -10,26 +10,27 @@ namespace Metal.Emailing.Models
             Recipients = new List<string>();
             CCRecipients = new List<string>();
             BCCRecipients = new List<string>();
+            Attachments = new List<Attachment>();
         }
-        
+
         public string FromEmail { get; set; }
-        
+
         public string ReplyEmail { get; set; }
-        
+
         public string DisplayName { get; set; }
-        
-        public IEnumerable<string> Recipients { get; set; }
-        
-        public IEnumerable<string> CCRecipients { get; set; }
-        
-        public IEnumerable<string> BCCRecipients { get; set; }
-        
+
+        public List<string> Recipients { get; set; }
+
+        public List<string> CCRecipients { get; set; }
+
+        public List<string> BCCRecipients { get; set; }
+
         public string Subject { get; set; }
-        
+
         public string Body { get; set; }
-        
+
         public bool IsHtml { get; set; }
-        
-        public AttachmentCollection Attachments { get; set; }
+
+        public List<Attachment> Attachments { get; }
     }
 }
